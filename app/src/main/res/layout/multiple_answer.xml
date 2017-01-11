@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/multiple_answer"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/darker_gray">
+
+    <CheckBox
+        android:text="CheckBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb_answer1"
+        android:layout_margin="10dp"
+        android:padding="15dp"
+        android:background="@color/answers" />
+
+    <CheckBox
+        android:text="CheckBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb_answer2"
+        android:layout_margin="10dp"
+        android:padding="15dp"
+        android:background="@color/answers" />
+
+    <CheckBox
+        android:text="CheckBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb_answer3"
+        android:layout_margin="10dp"
+        android:padding="15dp"
+        android:background="@color/answers" />
+
+    <CheckBox
+        android:text="CheckBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb_answer4"
+        android:layout_margin="10dp"
+        android:padding="15dp"
+        android:background="@color/answers" />
+
+    <Button
+        android:text="SPRAWDŹ"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_check"
+        android:backgroundTintMode="multiply" />
+
+</LinearLayout>
