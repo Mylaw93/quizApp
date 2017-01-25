@@ -2,6 +2,7 @@ package com.example.mwars.quizapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +21,8 @@ public class MainActivity extends Activity {
         Intent intent = new Intent();
 
         if(btnName.contains("button_quiz")){
+//            Uri number = Uri.parse("tel:506630739");
+//            intent = new Intent(Intent.ACTION_DIAL, number);
             intent = new Intent(this, QuizActivity.class);
         } else if(btnName.contains("button_settings")){
             intent = new Intent(this, Mod3Activity.class);

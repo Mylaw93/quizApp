@@ -46,8 +46,8 @@
                 android:id="@+id/text_good_answer"
                 android:padding="15dp"
                 android:textSize="30sp"
-                android:textStyle="normal|bold"
-                android:textColor="@android:color/holo_green_light"
+                android:textStyle="normal|bold|italic"
+                android:textColor="@android:color/holo_green_dark"
                 android:layout_alignBaseline="@+id/textView6"
                 android:layout_alignBottom="@+id/textView6"
                 android:layout_toEndOf="@+id/textView6" />
@@ -75,7 +75,7 @@
                 android:id="@+id/text_bad_answer"
                 android:padding="15dp"
                 android:textSize="30sp"
-                android:textStyle="normal|bold"
+                android:textStyle="normal|bold|italic"
                 android:textColor="@android:color/holo_red_light"
                 android:layout_below="@+id/text_good_answer"
                 android:layout_toEndOf="@+id/textView7" />

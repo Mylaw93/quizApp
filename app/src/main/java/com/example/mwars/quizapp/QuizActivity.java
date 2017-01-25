@@ -1,6 +1,7 @@
 package com.example.mwars.quizapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.os.Bundle;
@@ -76,7 +77,7 @@ public class QuizActivity extends Activity {
 
             for (int i = 0; i < rgView.getChildCount() - 1; i++) {
                 RadioButton rbAnswer = (RadioButton) rgView.getChildAt(i);
-                rbAnswer.setText(question.answers.get(i));
+                rbAnswer.setText(question.answers.get(i)       );
                 rbAnswer.setTextColor(Color.BLACK);
             }
 
@@ -214,6 +215,7 @@ public class QuizActivity extends Activity {
 
         tvScore.setText(questionNr + "/" + questions.size() + " - " + percent + "%");
 
+
         new CountDownTimer(3000, 3000) {
             public void onTick(long millisUntilFinished) {}
             public void onFinish() {
@@ -237,18 +239,29 @@ public class QuizActivity extends Activity {
 
     public void showResult() {
 //        Log.d("RESULT", String.valueOf(questionNr));
-        ViewGroup answersLayout = (ViewGroup) findViewById(R.id.answers_layout);
-        LayoutInflater layInflater = (LayoutInflater) getApplicationContext().getSystemService(getApplicationContext().LAYOUT_INFLATER_SERVICE);
-        ViewGroup resultView = (ViewGroup) layInflater.inflate(R.layout.result_answer, null);
-        answersLayout.addView(resultView, 0, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
-        TextView goodAnswer = (TextView) findViewById(R.id.text_good_answer);
-        TextView badAnswer = (TextView) findViewById(R.id.text_bad_answer);
-        goodAnswer.setText(String.valueOf(score));
-        badAnswer.setText(String.valueOf(questions.size() - score));
+        Intent intent = new Intent(this, ResultActivity.class);
+        intent.putExtra("goodAnswer", score);
+        intent.putExtra("badAnswer", questions.size() - score);
+        startActivity(intent);
+
+//        ViewGroup answersLayout = (ViewGroup) findViewById(R.id.answers_layout);
+//        LayoutInflater layInflater = (LayoutInflater) getApplicationContext().getSystemService(getApplicationContext().LAYOUT_INFLATER_SERVICE);
+//        ViewGroup resultView = (ViewGroup) layInflater.inflate(R.layout.result_answer, null);
+//        answersLayout.addView(resultView, 0, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
+//        TextView goodAnswer = (TextView) findViewById(R.id.text_good_answer);
+//        TextView badAnswer = (TextView) findViewById(R.id.text_bad_answer);
+//        goodAnswer.setText(String.valueOf(score));
+//        badAnswer.setText(String.valueOf(questions.size() - score));
     }
 
 
     public void declareQuestion() {
+        DatabaseHandler db = new DatabaseHandler(this);
+        db.addQuestion(new QuestionSingleAnswer("Jak nazywa się uznanie własnego dziecka za swoje?",
+                Arrays.asList("przysposobienie", "aborcja", "adopcja", "symbioza"), 3));
+        Toast.makeText(getApplicationContext(), db.getAllQuestions().get(0).getQuestion().toString(), Toast.LENGTH_LONG).show();
+
+
         questions = new ArrayList<>();
         questSA = new QuestionSingleAnswer("Jak nazywa się uznanie własnego dziecka za swoje?",
                 Arrays.asList("przysposobienie", "aborcja", "adopcja", "symbioza"), 3);
